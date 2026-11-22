@@ -1,8 +1,8 @@
 # bansou.admoat.net（使っていない旧サイト）の全ページを、admoat.net の同じ内容のページへ飛ばす「転送用サイト」を作る。
-# 使い方：python3 作る.py  → site/ の中に転送ページができる（GitHub Pages で公開する）
+# 使い方：python3 作る.py  → docs/ の中に転送ページができる（GitHub Pages で公開する）
 import os, html, shutil
 HERE = os.path.dirname(os.path.abspath(__file__))
-OUT = os.path.join(HERE, "site")
+OUT = os.path.join(HERE, "docs")
 MAIN = "https://admoat.net/"
 HP = "/Users/ikedanoborusei/Documents/AdMoat_HP_form"  # admoat.net の作業用コピー（転送先が本当にあるか確かめる）
 
