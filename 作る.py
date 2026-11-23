@@ -1,4 +1,5 @@
 # bansou.admoat.net（使っていない旧サイト）の全ページを、admoat.net の同じ内容のページへ飛ばす「転送用サイト」を作る。
+# トップページだけは転送せず、lp/ の伴走支援LPを表示する。
 # 使い方：python3 作る.py  → docs/ の中に転送ページができる（GitHub Pages で公開する）
 import os, html, shutil
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -7,7 +8,7 @@ MAIN = "https://admoat.net/"
 HP = "/Users/ikedanoborusei/Documents/AdMoat_HP_form"  # admoat.net の作業用コピー（転送先が本当にあるか確かめる）
 
 # 記事以外のページ
-FIXED = {"": "accompaniment-support.dc.html", "service": "accompaniment-support.dc.html",
+FIXED = {"service": "accompaniment-support.dc.html",
          "cases": "works.dc.html", "about": "company.dc.html", "contact": "contact.dc.html",
          "privacy": "privacy.dc.html", "blog": "blog.dc.html"}
 # admoat.net に同じ名前の記事がないもの → いちばん近い記事へ
@@ -40,11 +41,14 @@ n = 0
 for line in open(os.path.join(HERE, "元のページ一覧.txt"), encoding="utf-8"):
     p = line.strip().replace("https://bansou.admoat.net", "").strip("/")
     if not line.strip(): continue
+    if p == "": continue  # トップはLP
     if p in FIXED: t = FIXED[p]
     elif p.startswith("blog/"):
         s = p[5:]; t = (NEAR.get(s) or "column-" + s) + ".dc.html"
     else: raise SystemExit("知らないページ: " + p)
     write(p, t); n += 1
+for f in ("index.html", "style.css"):
+    shutil.copy(os.path.join(HERE, "lp", f), os.path.join(OUT, f))
 # 一覧にないページ → トップへ
 open(os.path.join(OUT, "404.html"), "w", encoding="utf-8").write(page("accompaniment-support.dc.html", "移転しました｜AdMoat"))
 open(os.path.join(OUT, "CNAME"), "w").write("bansou.admoat.net\n")

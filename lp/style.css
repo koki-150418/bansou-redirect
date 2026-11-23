@@ -1,0 +1,186 @@
+/* bansou.admoat.net のトップ：店舗のMeta広告伴走支援LP
+   黒と金を基調に、相談ボタンだけLINEの緑。文字は原則中央寄せ。
+   飾りの細い線や英語の見出しラベルは使わない。 */
+
+:root {
+  --ink: #0f0f10;
+  --ink-2: #1a1a1c;
+  --paper: #f6f4f0;
+  --white: #fff;
+  --text: #17171a;
+  --muted: #6c6862;
+  --gold: #d8ad5b;
+  --gold-soft: #f0d9a6;
+  --green: #06c755;
+  --green-dark: #04933f;
+  --num: "Oswald", "Noto Sans JP", sans-serif;
+}
+* { box-sizing: border-box; }
+html { min-width: 320px; scroll-behavior: smooth; }
+body {
+  margin: 0; min-width: 320px; background: var(--paper); color: var(--text);
+  font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  font-size: 16px; line-height: 1.85; text-align: center;
+  line-break: strict; word-break: keep-all; overflow-wrap: anywhere;
+  -webkit-font-smoothing: antialiased; padding-bottom: 72px;
+}
+a { color: inherit; }
+img { max-width: 100%; display: block; }
+p { margin: 0; }
+h1, h2 { margin: 0; font-weight: 900; line-height: 1.45; }
+
+/* 上の帯 */
+.top {
+  position: absolute; top: 0; left: 0; right: 0; z-index: 5;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 16px; color: #fff;
+}
+.logo { text-decoration: none; font-weight: 700; font-size: 14px; letter-spacing: .04em; }
+.top-cta {
+  text-decoration: none; font-size: 13px; font-weight: 700;
+  background: var(--green); color: #fff; padding: 6px 14px; border-radius: 999px;
+}
+
+/* ファーストビュー */
+.fv {
+  position: relative; color: #fff; padding: 96px 16px 64px;
+  background:
+    linear-gradient(180deg, rgb(10 10 11 / 82%) 0%, rgb(10 10 11 / 92%) 70%, #0a0a0b 100%),
+    url("https://admoat.net/assets/banso-strategy-clean.jpg") center / cover no-repeat;
+}
+.fv-inner { max-width: 640px; margin: 0 auto; }
+.fv-kicker { color: var(--gold-soft); font-size: 15px; font-weight: 700; letter-spacing: .06em; }
+.fv h1 { font-size: 34px; margin: 18px 0 20px; letter-spacing: .02em; }
+.gold { color: var(--gold); }
+.fv-lead { font-size: 16px; color: #e9e6e0; }
+.fv-price {
+  display: inline-block; margin: 30px auto 28px; padding: 14px 26px 12px;
+  border: 1px solid var(--gold); border-radius: 6px;
+}
+.fv-price-main { display: flex; align-items: baseline; justify-content: center; gap: 2px; }
+.fv-price-main .small { font-size: 14px; color: var(--gold-soft); }
+.fv-price-main .num { font-family: var(--num); font-size: 56px; line-height: 1; color: var(--gold); margin: 0 2px 0 6px; }
+.fv-price-main .unit { font-size: 22px; font-weight: 900; color: var(--gold); }
+.fv-price-sub { font-size: 14px; font-weight: 700; margin-top: 6px; }
+.fv-note { font-size: 13px; color: #cfcac2; margin-top: 12px; }
+
+/* ボタン */
+.btn-line {
+  display: block; max-width: 340px; margin: 0 auto; padding: 18px 16px;
+  background: var(--green); color: #fff; text-decoration: none;
+  font-size: 18px; font-weight: 900; border-radius: 999px;
+  box-shadow: 0 6px 0 var(--green-dark);
+}
+.btn-line:active { transform: translateY(3px); box-shadow: 0 3px 0 var(--green-dark); }
+
+/* 共通の区画 */
+.sec { padding: 72px 16px; }
+.sec > * { max-width: 720px; margin-left: auto; margin-right: auto; }
+.sec h2 { font-size: 26px; margin-bottom: 26px; }
+.paper { background: var(--paper); }
+.white { background: var(--white); }
+.dark { background: var(--ink); color: #fff; }
+.dark h2 { color: #fff; }
+.lead { font-size: 16px; margin-bottom: 18px; }
+.lead.strong { font-weight: 700; font-size: 17px; }
+.dark .lead { color: #e2ded7; }
+.tiny { font-size: 12px; color: var(--muted); margin-top: 18px; }
+.wide-photo { width: 100%; border-radius: 6px; margin-top: 30px; aspect-ratio: 950 / 260; object-fit: cover; }
+
+/* 比べる箱 */
+.compare { display: grid; gap: 14px; margin-top: 8px; }
+.cmp { background: var(--paper); border-radius: 8px; padding: 22px 16px; }
+.cmp-name { font-weight: 700; font-size: 16px; color: var(--muted); }
+.cmp-price { font-size: 22px; font-weight: 900; margin: 6px 0 8px; line-height: 1.4; }
+.cmp-price span { font-size: 13px; font-weight: 500; color: var(--muted); }
+.cmp-left { font-size: 15px; }
+.cmp.ours { background: var(--ink); color: #fff; }
+.cmp.ours .cmp-name { color: var(--gold-soft); }
+.cmp.ours .cmp-price { color: var(--gold); }
+.cmp.ours .cmp-price span { color: #d9d4cc; }
+.cmp.ours .cmp-left { font-weight: 700; }
+
+/* 手に入るもの */
+.gets { display: grid; gap: 14px; }
+.get { background: var(--ink-2); border-radius: 8px; padding: 26px 16px; }
+.get-num { color: var(--gold); font-weight: 900; font-size: 18px; }
+.get-num span { font-family: var(--num); font-size: 40px; line-height: 1.1; margin: 0 2px; }
+.get:nth-child(n+2) .get-num span { font-family: inherit; font-size: 30px; }
+.get-title { font-size: 19px; font-weight: 900; margin: 6px 0 10px; }
+.get-text { font-size: 15px; color: #d9d4cc; }
+
+/* 強み */
+.points { display: grid; gap: 14px; }
+.point { background: var(--white); border-radius: 8px; padding: 24px 16px; }
+.point-title { font-size: 18px; font-weight: 900; line-height: 1.55; margin-bottom: 10px; }
+.point-text { font-size: 15px; color: #3b3935; }
+.industries { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 28px; }
+.industries figure { margin: 0; }
+.industries img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 6px; }
+.industries figcaption { font-size: 12px; font-weight: 700; margin-top: 6px; }
+
+/* 声 */
+.case { background: var(--paper); border-radius: 8px; padding: 26px 16px; margin-bottom: 14px; }
+.case-shop { font-size: 14px; color: var(--muted); font-weight: 700; }
+.case-head { font-size: 20px; font-weight: 900; margin: 8px 0 14px; line-height: 1.5; }
+.case-nums { display: flex; justify-content: center; align-items: flex-end; gap: 12px; }
+.case-nums .lbl { display: block; font-size: 12px; color: var(--muted); }
+.case-nums .n { font-family: var(--num); font-size: 40px; line-height: 1.1; }
+.case-nums .gold-n { color: #b8862f; }
+.case-nums .u { font-weight: 700; font-size: 15px; }
+.case-nums .arrow { font-size: 22px; color: var(--muted); padding-bottom: 6px; }
+.quote { font-size: 17px; font-weight: 700; margin: 12px 0 14px; line-height: 1.7; }
+.text-link { display: inline-block; margin-top: 14px; font-size: 14px; font-weight: 700; color: #8a6420; }
+
+/* 料金 */
+.price-box { background: var(--white); border-radius: 8px; padding: 26px 20px; }
+.price-row { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 0; border-bottom: 1px dashed #d8d3ca; }
+.price-name { font-weight: 700; font-size: 15px; }
+.price-val { font-weight: 700; }
+.price-val .n { font-family: var(--num); font-size: 30px; margin-right: 2px; }
+.price-val .tax { font-size: 12px; color: var(--muted); }
+.price-list { text-align: left; margin: 20px 0 0; padding: 0 0 0 1.2em; font-size: 15px; }
+.price-list li { margin-bottom: 6px; }
+
+/* 最後の案内 */
+.final .lead { margin-bottom: 30px; }
+.more { margin-top: 26px; font-size: 14px; }
+.more a { color: var(--gold-soft); }
+
+/* 下 */
+.foot { background: #050505; color: #a9a49b; padding: 28px 16px; font-size: 13px; }
+.foot-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 18px; }
+.foot-links a { text-decoration: none; }
+.copy { margin-top: 10px; font-size: 12px; }
+
+/* スマホで画面下に出し続ける相談ボタン */
+.sticky-cta {
+  position: fixed; left: 12px; right: 12px; bottom: 10px; z-index: 10;
+  display: block; padding: 14px; border-radius: 999px; text-align: center;
+  background: var(--green); color: #fff; font-weight: 900; font-size: 16px; text-decoration: none;
+  box-shadow: 0 6px 18px rgb(0 0 0 / 28%);
+  opacity: 0; pointer-events: none; transform: translateY(16px); transition: opacity .25s, transform .25s;
+}
+.sticky-cta.show { opacity: 1; pointer-events: auto; transform: none; }
+
+@media (max-width: 359px) {
+  .fv h1 { font-size: 30px; }
+}
+
+@media (min-width: 768px) {
+  body { padding-bottom: 0; }
+  .sticky-cta { display: none; }
+  .top { padding: 18px 32px; }
+  .fv { padding: 130px 32px 90px; }
+  .fv h1 { font-size: 52px; }
+  .fv-lead { font-size: 18px; }
+  .sec { padding: 96px 32px; }
+  .sec h2 { font-size: 34px; }
+  .lead { font-size: 17px; }
+  .compare, .gets, .points { grid-template-columns: repeat(3, 1fr); }
+  .compare, .gets, .points, .industries, .case, .price-box { max-width: 960px; }
+  .price-box { max-width: 560px; }
+  .case { max-width: 640px; }
+}
+
+.sec > .btn-line { max-width: 340px; }
